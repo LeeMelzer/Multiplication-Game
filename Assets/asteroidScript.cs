@@ -25,7 +25,7 @@ public class asteroidScript : MonoBehaviour
 
     public int GenerateNumber()
     {
-        return Random.Range(1, 12); 
+        return Random.Range(1, 13); 
     }
 
     public void DisplayProblem()
