@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 584973149288465378, guid: 5d4aa04fdc381dd46af01ecfd01f5e62, type: 3}
+  answer: 24
   spawn: 0
 --- !u!4 &209130274
 Transform:
@@ -310,8 +311,14 @@ MonoBehaviour:
   asteroidSpawner4: {fileID: 1164950735}
   asteroidSpawner5: {fileID: 209130273}
   asteroidSpawner6: {fileID: 1190115692}
-  spawnRate: 5
-  timer: 0
+  answerBubbleSpawner1: {fileID: 635374320}
+  answerBubbleSpawner2: {fileID: 1367356372}
+  answerBubbleSpawner3: {fileID: 1996874421}
+  asteroid: {fileID: 3816554657845064074, guid: 5d4aa04fdc381dd46af01ecfd01f5e62, type: 3}
+  answerBubble: {fileID: 2249275033923761634, guid: 4607c629d1d048f49b154f9f7ee7c441, type: 3}
+  asteroidExists: 0
+  problem: 
+  answer: 
 --- !u!4 &365144082
 Transform:
   m_ObjectHideFlags: 0
@@ -320,7 +327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365144080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.26, y: 5.42, z: 0.3993888}
+  m_LocalPosition: {x: -0.23, y: 5.27, z: 0.3993888}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -419,6 +426,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &635374319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 635374321}
+  - component: {fileID: 635374320}
+  m_Layer: 0
+  m_Name: AnswerBubbleSpawner1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &635374320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635374319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa7d6be0f734fb4c98cde7fbbf0a8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  answerBubble: {fileID: 3792579153355141133, guid: 4607c629d1d048f49b154f9f7ee7c441, type: 3}
+  spawn: 0
+--- !u!4 &635374321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635374319}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.43, y: 3.6, z: 0.40449446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &878117616
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 584973149288465378, guid: 5d4aa04fdc381dd46af01ecfd01f5e62, type: 3}
+  answer: 24
   spawn: 0
 --- !u!4 &878117618
 Transform:
@@ -563,6 +617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 584973149288465378, guid: 5d4aa04fdc381dd46af01ecfd01f5e62, type: 3}
+  answer: 24
   spawn: 0
 --- !u!4 &1123127724
 Transform:
@@ -609,6 +664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 584973149288465378, guid: 5d4aa04fdc381dd46af01ecfd01f5e62, type: 3}
+  answer: 24
   spawn: 0
 --- !u!4 &1164950736
 Transform:
@@ -655,6 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 584973149288465378, guid: 5d4aa04fdc381dd46af01ecfd01f5e62, type: 3}
+  answer: 24
   spawn: 0
 --- !u!4 &1190115693
 Transform:
@@ -777,6 +834,52 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1367356371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1367356373}
+  - component: {fileID: 1367356372}
+  m_Layer: 0
+  m_Name: AnswerBubbleSpawner2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1367356372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367356371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa7d6be0f734fb4c98cde7fbbf0a8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  answerBubble: {fileID: 3792579153355141133, guid: 4607c629d1d048f49b154f9f7ee7c441, type: 3}
+  spawn: 0
+--- !u!4 &1367356373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367356371}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.04, y: 3.6, z: 0.40449446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1401204446
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,6 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 584973149288465378, guid: 5d4aa04fdc381dd46af01ecfd01f5e62, type: 3}
+  answer: 24
   spawn: 0
 --- !u!4 &1401204448
 Transform:
@@ -822,4 +926,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1996874420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1996874422}
+  - component: {fileID: 1996874421}
+  m_Layer: 0
+  m_Name: AnswerBubbleSpawner3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1996874421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996874420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa7d6be0f734fb4c98cde7fbbf0a8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  answerBubble: {fileID: 3792579153355141133, guid: 4607c629d1d048f49b154f9f7ee7c441, type: 3}
+  spawn: 0
+--- !u!4 &1996874422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996874420}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.51, y: 3.6, z: 0.40449446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

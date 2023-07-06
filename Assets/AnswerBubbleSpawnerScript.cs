@@ -1,13 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
-public class AsteroidSpawnScript : MonoBehaviour
+public class AnswerBubbleSpawnerScript : MonoBehaviour
 {
-    public GameObject asteroid;
-    public int answer = 24;
+    public GameObject answerBubble;
     public bool spawn = false;
 
     // Start is called before the first frame update
@@ -21,13 +18,14 @@ public class AsteroidSpawnScript : MonoBehaviour
     {
         if (spawn)
         {
-            Instantiate(asteroid, transform.position, transform.rotation);
+            Instantiate(answerBubble, transform.position, transform.rotation);
             spawn = false;
         }
     }
 
     public void Spawn()
     {
-        spawn = true;
+        Instantiate(answerBubble, transform.position, transform.rotation);
+        //spawn = true;
     }
 }

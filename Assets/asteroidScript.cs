@@ -13,7 +13,7 @@ public class asteroidScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DisplayProblem();
+        
     }
 
     // Update is called once per frame
@@ -23,17 +23,11 @@ public class asteroidScript : MonoBehaviour
         textElement.text = problem;
     }
 
-    public int GenerateNumber()
+    public void SetProblem(string problem)
     {
-        return Random.Range(2, 13); 
+        this.problem = problem;
     }
 
-    public void DisplayProblem()
-    {
-        int firstNumber = GenerateNumber();
-        int secondNumber = GenerateNumber();
-        problem = firstNumber.ToString() + " X " + secondNumber.ToString();
-    }
 
 
 }
