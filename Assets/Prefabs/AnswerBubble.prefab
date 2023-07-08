@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6284387081780963721}
   m_Layer: 0
   m_Name: AnswerBubble
-  m_TagString: Untagged
+  m_TagString: bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 5807558342316348258}
-  number: 20
-  asteroidExists: 0
+  number: 90
+  bubbles: []
 --- !u!61 &6284387081780963721
 BoxCollider2D:
   m_ObjectHideFlags: 0

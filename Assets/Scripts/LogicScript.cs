@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class LogicScript : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class LogicScript : MonoBehaviour
     public AnswerBubbleScript answerBubble;
     public IncorrectAnswerBubbleScript incorrectAnswerBubble;
     public string problem;
-    public string answer; 
+    public int answer;
+    public HashSet<int> set = new HashSet<int>(); 
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +33,15 @@ public class LogicScript : MonoBehaviour
     {
         if (GameObject.FindWithTag("asteroid") == null)
         {
+            // add slight delay before next round?
+
+            // Clear the hashset for new round of answers
+            set.Clear();
+
             // Generate problems and answers here
             CreateProblem();
             asteroid.SetProblem(problem);
-            answerBubble.SetNumber(answer);
+            answerBubble.SetNumber(answer.ToString());
 
             // Randomly select asteroid spawner and spawn
             int selectSpawner = Random.Range(1, 7);
@@ -65,7 +72,6 @@ public class LogicScript : MonoBehaviour
             int selectBubble = Random.Range(1, 4);
             switch (selectBubble)
             {
-                // need to check that generated answers do not equal the correct answer -- no duplicates
                 case 1:
                     answerBubbleSpawner1.SpawnCorrect();
                     incorrectAnswerBubble.SetNumber(GenerateIncorrectAnswer());
@@ -98,13 +104,20 @@ public class LogicScript : MonoBehaviour
         int secondNumber = Random.Range(2, 13);
         int temp = firstNumber * secondNumber;
         problem = firstNumber.ToString() + " X " + secondNumber.ToString();
-        answer = temp.ToString(); 
+        answer = temp;
+        set.Add(answer);
     }
 
     public string GenerateIncorrectAnswer()
     {
-        int firstNumber = Random.Range(2, 13);
-        int secondNumber = Random.Range(2, 13);
-        return (firstNumber * secondNumber).ToString();
+        int temp;
+        do
+        {
+            int firstNumber = Random.Range(2, 13);
+            int secondNumber = Random.Range(2, 13);
+            temp = firstNumber * secondNumber;
+        } while (set.Contains(temp));
+        set.Add(temp);
+        return temp.ToString();
     }    
 }

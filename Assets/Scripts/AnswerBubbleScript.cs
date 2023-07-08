@@ -7,6 +7,7 @@ public class AnswerBubbleScript : MonoBehaviour
 {
     public Text textElement;
     public string number;
+    public GameObject[] bubbles; // I know that girl!
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +30,10 @@ public class AnswerBubbleScript : MonoBehaviour
     private void OnMouseDown()
     {
         GameObject asteroid = GameObject.FindWithTag("asteroid");
-        // find the two incorrect answer bubbles
+        bubbles = GameObject.FindGameObjectsWithTag("bubble");
         Destroy(asteroid); 
-        Destroy(gameObject);
+        foreach (GameObject a in bubbles) { Destroy(a); }
+        //Destroy(gameObject);
     }
 
 }

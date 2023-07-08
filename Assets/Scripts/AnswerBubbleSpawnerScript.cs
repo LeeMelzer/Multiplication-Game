@@ -6,7 +6,6 @@ public class AnswerBubbleSpawnerScript : MonoBehaviour
 {
     public GameObject answerBubble;
     public GameObject incorrectAnswerBubble;
-    public bool spawn = false;
 
     // Start is called before the first frame update
     void Start()
