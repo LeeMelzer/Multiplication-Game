@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnswerBubbleScript : MonoBehaviour
+public class IncorrectAnswerBubbleScript : MonoBehaviour
 {
     public Text textElement;
     public string number;
@@ -22,16 +22,12 @@ public class AnswerBubbleScript : MonoBehaviour
 
     public void SetNumber(string number)
     {
-        this.number = number; 
+        this.number = number;
     }
 
-    // Onclick method to delete asteroid and other answer bubbles
+    // Onclick method to delete answer bubble
     private void OnMouseDown()
     {
-        GameObject asteroid = GameObject.FindWithTag("asteroid");
-        // find the two incorrect answer bubbles
-        Destroy(asteroid); 
-        Destroy(gameObject);
+        Destroy(gameObject); 
     }
-
 }

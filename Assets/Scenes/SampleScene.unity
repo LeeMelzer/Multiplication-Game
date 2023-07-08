@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 365144081}
   m_Layer: 0
   m_Name: LogicManager
-  m_TagString: Untagged
+  m_TagString: logic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,6 +316,7 @@ MonoBehaviour:
   answerBubbleSpawner3: {fileID: 1996874421}
   asteroid: {fileID: 3816554657845064074, guid: 5d4aa04fdc381dd46af01ecfd01f5e62, type: 3}
   answerBubble: {fileID: 2249275033923761634, guid: 4607c629d1d048f49b154f9f7ee7c441, type: 3}
+  incorrectAnswerBubble: {fileID: -5800504786918104500, guid: b63be36f5df5475488c20ffe20092526, type: 3}
   asteroidExists: 0
   problem: 
   answer: 
@@ -456,6 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   answerBubble: {fileID: 3792579153355141133, guid: 4607c629d1d048f49b154f9f7ee7c441, type: 3}
+  incorrectAnswerBubble: {fileID: 7844018372271242155, guid: b63be36f5df5475488c20ffe20092526, type: 3}
   spawn: 0
 --- !u!4 &635374321
 Transform:
@@ -864,6 +866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   answerBubble: {fileID: 3792579153355141133, guid: 4607c629d1d048f49b154f9f7ee7c441, type: 3}
+  incorrectAnswerBubble: {fileID: 7844018372271242155, guid: b63be36f5df5475488c20ffe20092526, type: 3}
   spawn: 0
 --- !u!4 &1367356373
 Transform:
@@ -957,6 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   answerBubble: {fileID: 3792579153355141133, guid: 4607c629d1d048f49b154f9f7ee7c441, type: 3}
+  incorrectAnswerBubble: {fileID: 7844018372271242155, guid: b63be36f5df5475488c20ffe20092526, type: 3}
   spawn: 0
 --- !u!4 &1996874422
 Transform:

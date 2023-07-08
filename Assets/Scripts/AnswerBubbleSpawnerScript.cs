@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnswerBubbleSpawnerScript : MonoBehaviour
 {
     public GameObject answerBubble;
+    public GameObject incorrectAnswerBubble;
     public bool spawn = false;
 
     // Start is called before the first frame update
@@ -16,16 +17,17 @@ public class AnswerBubbleSpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawn)
-        {
-            Instantiate(answerBubble, transform.position, transform.rotation);
-            spawn = false;
-        }
+       
     }
 
-    public void Spawn()
+    public void SpawnCorrect()
     {
         Instantiate(answerBubble, transform.position, transform.rotation);
-        //spawn = true;
+        
+    }
+
+    public void SpawnIncorrect()
+    {
+        Instantiate(incorrectAnswerBubble, transform.position, transform.rotation);
     }
 }

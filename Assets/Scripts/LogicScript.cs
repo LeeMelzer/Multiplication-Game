@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +15,8 @@ public class LogicScript : MonoBehaviour
     public AnswerBubbleSpawnerScript answerBubbleSpawner2;
     public AnswerBubbleSpawnerScript answerBubbleSpawner3;
     public asteroidScript asteroid;
-    public AnswerBubbleScript answerBubble; 
-    public bool asteroidExists = false;
+    public AnswerBubbleScript answerBubble;
+    public IncorrectAnswerBubbleScript incorrectAnswerBubble;
     public string problem;
     public string answer; 
 
@@ -28,12 +29,12 @@ public class LogicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!asteroidExists)
+        if (GameObject.FindWithTag("asteroid") == null)
         {
             // Generate problems and answers here
-            CreateProblem(); 
+            CreateProblem();
             asteroid.SetProblem(problem);
-            answerBubble.SetNumber(answer); 
+            answerBubble.SetNumber(answer);
 
             // Randomly select asteroid spawner and spawn
             int selectSpawner = Random.Range(1, 7);
@@ -64,31 +65,29 @@ public class LogicScript : MonoBehaviour
             int selectBubble = Random.Range(1, 4);
             switch (selectBubble)
             {
+                // need to check that generated answers do not equal the correct answer -- no duplicates
                 case 1:
-                    answerBubbleSpawner1.Spawn();
-                    answerBubble.SetNumber(GenerateIncorrectAnswer());
-                    answerBubbleSpawner2.Spawn();
-                    answerBubble.SetNumber(GenerateIncorrectAnswer());
-                    answerBubbleSpawner3.Spawn();
+                    answerBubbleSpawner1.SpawnCorrect();
+                    incorrectAnswerBubble.SetNumber(GenerateIncorrectAnswer());
+                    answerBubbleSpawner2.SpawnIncorrect();
+                    incorrectAnswerBubble.SetNumber(GenerateIncorrectAnswer());
+                    answerBubbleSpawner3.SpawnIncorrect();
                     break;
                 case 2:
-                    answerBubbleSpawner2.Spawn();
-                    answerBubble.SetNumber(GenerateIncorrectAnswer());
-                    answerBubbleSpawner1.Spawn();
-                    answerBubble.SetNumber(GenerateIncorrectAnswer());
-                    answerBubbleSpawner3.Spawn();
+                    answerBubbleSpawner2.SpawnCorrect();
+                    incorrectAnswerBubble.SetNumber(GenerateIncorrectAnswer());
+                    answerBubbleSpawner1.SpawnIncorrect();
+                    incorrectAnswerBubble.SetNumber(GenerateIncorrectAnswer());
+                    answerBubbleSpawner3.SpawnIncorrect();
                     break;
                 case 3:
-                    answerBubbleSpawner3.Spawn();
-                    answerBubble.SetNumber(GenerateIncorrectAnswer());
-                    answerBubbleSpawner2.Spawn();
-                    answerBubble.SetNumber(GenerateIncorrectAnswer());
-                    answerBubbleSpawner1.Spawn();
+                    answerBubbleSpawner3.SpawnCorrect();
+                    incorrectAnswerBubble.SetNumber(GenerateIncorrectAnswer());
+                    answerBubbleSpawner2.SpawnIncorrect();
+                    incorrectAnswerBubble.SetNumber(GenerateIncorrectAnswer());
+                    answerBubbleSpawner1.SpawnIncorrect();
                     break;
             }
-
-            // Halt asteroid spawning until asteroid is destroyed
-            asteroidExists = true;
         }
     }
 
@@ -107,12 +106,5 @@ public class LogicScript : MonoBehaviour
         int firstNumber = Random.Range(2, 13);
         int secondNumber = Random.Range(2, 13);
         return (firstNumber * secondNumber).ToString();
-    }
-
-    // Function to trigger new asteroid spawn
-    public void AsteroidDestroyed()
-    {
-        asteroidExists = false;
-    }
-
+    }    
 }
