@@ -7,18 +7,6 @@ public class AnswerBubbleSpawnerScript : MonoBehaviour
     public GameObject answerBubble;
     public GameObject incorrectAnswerBubble;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-
     public void SpawnCorrect()
     {
         Instantiate(answerBubble, transform.position, transform.rotation);

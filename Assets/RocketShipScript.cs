@@ -5,25 +5,39 @@ using UnityEngine;
 public class RocketShipScript : MonoBehaviour
 {
     public GameObject[] bubbles;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject healthBar1;
+    public GameObject healthBar2;
+    public GameObject healthBar3;
+    public int healthCount = 3;
+    public LogicScript logic;
 
     private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
     {
         bubbles = GameObject.FindGameObjectsWithTag("bubble");
         GameObject asteroid = GameObject.FindWithTag("asteroid");
+        DeleteHealth();
         Destroy(asteroid);
         foreach (GameObject a in bubbles) { Destroy(a); }
-        // add delete healthbar functionality
+    }
+
+    public void DeleteHealth()
+    {
+        logic = GameObject.FindWithTag("logic").GetComponent<LogicScript>();
+        switch(healthCount)
+        {
+            case 3:
+                Destroy(healthBar3);
+                --healthCount;
+                break;
+            case 2:
+                Destroy(healthBar2);
+                --healthCount;
+                break;
+            case 1:
+                Destroy(healthBar1);
+                --healthCount;
+                break;
+        }
+        logic.AddHit();
     }
 }

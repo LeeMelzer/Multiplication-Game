@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LogicScript : MonoBehaviour
 {
@@ -18,22 +20,31 @@ public class LogicScript : MonoBehaviour
     public asteroidScript asteroid;
     public AnswerBubbleScript answerBubble;
     public IncorrectAnswerBubbleScript incorrectAnswerBubble;
+    public GameObject rocketShip;
+    public GameObject gameOverScreen;
+    public Text answerBox;
     public string problem;
     public int answer;
+    public int userScore;
+    public Text scoreText;
+    public int hits = 0;
     public HashSet<int> set = new HashSet<int>(); 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindWithTag("asteroid") == null)
+        // Counter for collisions and game over condition
+        if (hits > 2)
         {
-            // add slight delay before next round?
+            Destroy(rocketShip);
+            GameOver();
+        }
+        
+        // greater than two hits = game over
+        if (GameObject.FindWithTag("asteroid") == null && hits <= 2)
+        {
+            // Clear the answer box of previous answer
+            answerBox.text = "";
 
             // Clear the hashset for new round of answers
             set.Clear();
@@ -120,4 +131,31 @@ public class LogicScript : MonoBehaviour
         set.Add(temp);
         return temp.ToString();
     }    
+
+    public void AddScore()
+    {
+        userScore += 100;
+        scoreText.text = userScore.ToString();
+    }
+
+    public void AddHit()
+    {
+        ++hits;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GameOver()
+    {
+        answerBox.text = "";
+        gameOverScreen.SetActive(true);
+    }
+
+    public void DisplayAnswer()
+    {
+        answerBox.text = answer.ToString();
+    }
 }

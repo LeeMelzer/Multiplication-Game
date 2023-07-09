@@ -7,13 +7,8 @@ public class AnswerBubbleScript : MonoBehaviour
 {
     public Text textElement;
     public string number;
-    public GameObject[] bubbles; // I know that girl!
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject[] bubbles;
+    public LogicScript logic;
 
     // Update is called once per frame
     void Update()
@@ -31,9 +26,9 @@ public class AnswerBubbleScript : MonoBehaviour
     {
         GameObject asteroid = GameObject.FindWithTag("asteroid");
         bubbles = GameObject.FindGameObjectsWithTag("bubble");
+        logic = GameObject.FindGameObjectWithTag("logic").GetComponent<LogicScript>();
+        logic.AddScore();
         Destroy(asteroid); 
         foreach (GameObject a in bubbles) { Destroy(a); }
-        //Destroy(gameObject);
     }
-
 }

@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
   moveSpeed: 1
-  problem: 3 X 11
+  problem: 2 X 3
   textElement: {fileID: 3206745249447925583}
 --- !u!1 &7819925239630710368
 GameObject:
