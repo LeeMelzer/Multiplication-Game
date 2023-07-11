@@ -6,10 +6,26 @@ using UnityEngine.TextCore.Text;
 
 public class AsteroidSpawnScript : MonoBehaviour
 {
-    public GameObject asteroid;
+    public GameObject asteroidEasy;
+    public GameObject asteroidMedium;
+    public GameObject asteroidHard;
+    public static bool easy = false;
+    public static bool medium = false;
+    public static bool hard = false;
 
     public void Spawn()
     {
-        Instantiate(asteroid, transform.position, transform.rotation);
+        if (easy)
+        {
+            Instantiate(asteroidEasy, transform.position, transform.rotation);
+        }
+        else if (medium)
+        {
+            Instantiate(asteroidMedium, transform.position, transform.rotation);
+        }
+        else if (hard)
+        {
+            Instantiate(asteroidHard, transform.position, transform.rotation);
+        }
     }
 }

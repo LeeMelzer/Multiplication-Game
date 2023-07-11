@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class asteroidScript : MonoBehaviour
 {
     public Vector3 targetPosition = Vector3.zero;
-    public float moveSpeed = 1;
+    public float moveSpeed;
     public string problem;
     public Text textElement;
 

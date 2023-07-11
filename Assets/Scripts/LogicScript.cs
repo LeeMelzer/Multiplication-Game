@@ -17,7 +17,9 @@ public class LogicScript : MonoBehaviour
     public AnswerBubbleSpawnerScript answerBubbleSpawner1;
     public AnswerBubbleSpawnerScript answerBubbleSpawner2;
     public AnswerBubbleSpawnerScript answerBubbleSpawner3;
-    public asteroidScript asteroid;
+    public asteroidScript asteroidEasy;
+    public asteroidScript asteroidMedium;
+    public asteroidScript asteroidHard;
     public AnswerBubbleScript answerBubble;
     public IncorrectAnswerBubbleScript incorrectAnswerBubble;
     public GameObject rocketShip;
@@ -36,6 +38,9 @@ public class LogicScript : MonoBehaviour
         // Counter for collisions and game over condition
         if (hits > 2)
         {
+            AsteroidSpawnScript.easy = false;
+            AsteroidSpawnScript.medium = false;
+            AsteroidSpawnScript.hard = false;
             Destroy(rocketShip);
             GameOver();
         }
@@ -51,7 +56,18 @@ public class LogicScript : MonoBehaviour
 
             // Generate problems and answers here
             CreateProblem();
-            asteroid.SetProblem(problem);
+            if (AsteroidSpawnScript.easy)
+            {
+                asteroidEasy.SetProblem(problem);
+            }
+            else if (AsteroidSpawnScript.medium)
+            {
+                asteroidMedium.SetProblem(problem);
+            }
+            else if (AsteroidSpawnScript.hard)
+            {
+                asteroidHard.SetProblem(problem);
+            }
             answerBubble.SetNumber(answer.ToString());
 
             // Randomly select asteroid spawner and spawn
@@ -145,7 +161,7 @@ public class LogicScript : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(0);
     }
 
     public void GameOver()

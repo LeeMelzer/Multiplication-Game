@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4536675957775609885}
   - component: {fileID: 3816554657845064074}
   m_Layer: 0
-  m_Name: Asteroid
+  m_Name: AsteroidEasy
   m_TagString: asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
   moveSpeed: 1
-  problem: 2 X 3
+  problem: 4 X 9
   textElement: {fileID: 3206745249447925583}
 --- !u!1 &7819925239630710368
 GameObject:
