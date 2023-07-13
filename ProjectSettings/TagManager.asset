@@ -9,6 +9,9 @@ TagManager:
   - logic
   - health
   - spawner
+  - smoke
+  - rocketShip
+  - explosion
   layers:
   - Default
   - TransparentFX

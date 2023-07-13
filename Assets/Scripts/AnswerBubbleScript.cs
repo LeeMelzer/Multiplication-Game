@@ -9,6 +9,7 @@ public class AnswerBubbleScript : MonoBehaviour
     public string number;
     public GameObject[] bubbles;
     public LogicScript logic;
+    public asteroidScript asteroidScript;
 
     // Update is called once per frame
     void Update()
@@ -25,10 +26,12 @@ public class AnswerBubbleScript : MonoBehaviour
     private void OnMouseDown()
     {
         GameObject asteroid = GameObject.FindWithTag("asteroid");
+        asteroidScript = GameObject.FindGameObjectWithTag("asteroid").GetComponent<asteroidScript>();
         bubbles = GameObject.FindGameObjectsWithTag("bubble");
         logic = GameObject.FindGameObjectWithTag("logic").GetComponent<LogicScript>();
         logic.AddScore();
-        Destroy(asteroid); 
+        asteroidScript.Explode(); 
+        Destroy(asteroid);
         foreach (GameObject a in bubbles) { Destroy(a); }
     }
 }

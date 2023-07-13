@@ -22,15 +22,24 @@ public class LogicScript : MonoBehaviour
     public asteroidScript asteroidHard;
     public AnswerBubbleScript answerBubble;
     public IncorrectAnswerBubbleScript incorrectAnswerBubble;
+    public RocketShipScript rocketShipScript;
     public GameObject rocketShip;
+    public GameObject smoke;
     public GameObject gameOverScreen;
+    public GameObject[] explosion;
     public Text answerBox;
     public string problem;
     public int answer;
     public int userScore;
     public Text scoreText;
     public int hits = 0;
-    public HashSet<int> set = new HashSet<int>(); 
+    public float timeToLive = 3;
+    public HashSet<int> set = new HashSet<int>();
+
+    void Start()
+    {
+        rocketShipScript = GameObject.FindGameObjectWithTag("rocketShip").GetComponent<RocketShipScript>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -41,13 +50,19 @@ public class LogicScript : MonoBehaviour
             AsteroidSpawnScript.easy = false;
             AsteroidSpawnScript.medium = false;
             AsteroidSpawnScript.hard = false;
+            rocketShipScript.Explode();
             Destroy(rocketShip);
+            Destroy(smoke);
             GameOver();
         }
         
         // greater than two hits = game over
         if (GameObject.FindWithTag("asteroid") == null && hits <= 2)
         {
+            // Find and destroy previous explosion prefabs to save memory
+            explosion = GameObject.FindGameObjectsWithTag("explosion");
+            foreach (GameObject e in explosion) { Destroy(e, timeToLive); }
+
             // Clear the answer box of previous answer
             answerBox.text = "";
 

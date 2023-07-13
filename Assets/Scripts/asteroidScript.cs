@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class asteroidScript : MonoBehaviour
     public float moveSpeed;
     public string problem;
     public Text textElement;
+    public GameObject explosion;
 
     // Update is called once per frame
     void Update()
@@ -20,5 +22,10 @@ public class asteroidScript : MonoBehaviour
     public void SetProblem(string problem)
     {
         this.problem = problem;
+    }
+
+    public void Explode()
+    {
+        Instantiate(explosion, transform.position, transform.rotation);
     }
 }

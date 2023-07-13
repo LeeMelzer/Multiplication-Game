@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 34061684531107414}
   - component: {fileID: 4536675957775609885}
   - component: {fileID: 3816554657845064074}
+  - component: {fileID: -514342095886460013}
   m_Layer: 0
   m_Name: AsteroidEasy
   m_TagString: asteroid
@@ -218,6 +219,34 @@ MonoBehaviour:
   moveSpeed: 1
   problem: 4 X 9
   textElement: {fileID: 3206745249447925583}
+  explosion: {fileID: 3450283721982915460, guid: 13f0955ec9297c243855235b7adc565f, type: 3}
+--- !u!50 &-514342095886460013
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584973149288465378}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7819925239630710368
 GameObject:
   m_ObjectHideFlags: 0
