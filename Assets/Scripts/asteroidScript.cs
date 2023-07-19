@@ -26,6 +26,7 @@ public class asteroidScript : MonoBehaviour
 
     public void Explode()
     {
+        AudioManager.instance.Play("Explosion");
         Instantiate(explosion, transform.position, transform.rotation);
     }
 }

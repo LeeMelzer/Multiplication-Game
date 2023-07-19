@@ -27,6 +27,7 @@ public class IncorrectAnswerBubbleScript : MonoBehaviour
         logic = GameObject.FindWithTag("logic").GetComponent<LogicScript>();
         bubbles = GameObject.FindGameObjectsWithTag("bubble");
         foreach (GameObject b in bubbles) { Destroy(b); }
+        AudioManager.instance.Play("WrongAnswer");
         logic.DisplayAnswer();
     }
 }

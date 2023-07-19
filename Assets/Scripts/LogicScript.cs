@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class LogicScript : MonoBehaviour
 {
@@ -31,6 +33,7 @@ public class LogicScript : MonoBehaviour
     public string problem;
     public int answer;
     public int userScore;
+    public byte[] score;
     public Text scoreText;
     public int hits = 0;
     public float timeToLive = 3;
@@ -39,6 +42,7 @@ public class LogicScript : MonoBehaviour
     void Start()
     {
         rocketShipScript = GameObject.FindGameObjectWithTag("rocketShip").GetComponent<RocketShipScript>();
+
     }
 
     // Update is called once per frame
@@ -47,13 +51,19 @@ public class LogicScript : MonoBehaviour
         // Counter for collisions and game over condition
         if (hits > 2)
         {
+            if (rocketShip == null) { return; }
             AsteroidSpawnScript.easy = false;
             AsteroidSpawnScript.medium = false;
             AsteroidSpawnScript.hard = false;
             rocketShipScript.Explode();
             Destroy(rocketShip);
+            AudioManager.instance.Play("RocketShipExplosion");
+            rocketShip = null;
+            rocketShipScript = null;
             Destroy(smoke);
+            smoke = null;
             GameOver();
+            //Submit();
         }
         
         // greater than two hits = game over
@@ -188,5 +198,31 @@ public class LogicScript : MonoBehaviour
     public void DisplayAnswer()
     {
         answerBox.text = answer.ToString();
+    }
+
+    public void Submit()
+    {
+        StartCoroutine(Upload());
+    }
+
+    IEnumerator Upload()
+    {
+        // adding user score to byte array at first index
+        score[0] = System.Convert.ToByte(userScore);
+
+        List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
+        formData.Add(new MultipartFormDataSection(score));
+
+        UnityWebRequest www = UnityWebRequest.Post("server name", formData);
+        yield return www.SendWebRequest();
+
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log("Form upload complete!");
+        }
     }
 }
