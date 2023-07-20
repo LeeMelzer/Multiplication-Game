@@ -33,11 +33,13 @@ public class LogicScript : MonoBehaviour
     public string problem;
     public int answer;
     public int userScore;
-    public byte[] score;
+    public string username = "testuser1";
+    public string gamename = "game2";
     public Text scoreText;
     public int hits = 0;
     public float timeToLive = 3;
     public HashSet<int> set = new HashSet<int>();
+    public string url = "http://capstone.rasinnovation.org/insert.php";
 
     void Start()
     {
@@ -63,7 +65,11 @@ public class LogicScript : MonoBehaviour
             Destroy(smoke);
             smoke = null;
             GameOver();
-            //Submit();
+            if (AsteroidSpawnScript.hard == true)
+            {
+                SendFormData(username, gamename, userScore);
+            }
+
         }
         
         // greater than two hits = game over
@@ -200,29 +206,29 @@ public class LogicScript : MonoBehaviour
         answerBox.text = answer.ToString();
     }
 
-    public void Submit()
+    public void SendFormData(string username, string gamename, int points)
     {
-        StartCoroutine(Upload());
+        StartCoroutine(PostFormData(username, gamename, points));
     }
 
-    IEnumerator Upload()
+    private IEnumerator PostFormData(string username, string gamename, int points)
     {
-        // adding user score to byte array at first index
-        score[0] = System.Convert.ToByte(userScore);
+        WWWForm form = new WWWForm();
+        form.AddField("username", username);
+        form.AddField("gamename", gamename);
+        form.AddField("points", points);
 
-        List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
-        formData.Add(new MultipartFormDataSection(score));
+        UnityWebRequest request = UnityWebRequest.Post(url, form);
 
-        UnityWebRequest www = UnityWebRequest.Post("server name", formData);
-        yield return www.SendWebRequest();
+        yield return request.SendWebRequest();
 
-        if (www.result != UnityWebRequest.Result.Success)
+        if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log(www.error);
+            Debug.LogError("Error sending form data: " + request.error);
         }
         else
         {
-            Debug.Log("Form upload complete!");
+            Debug.Log("Form data sent successfully!");
         }
     }
 }

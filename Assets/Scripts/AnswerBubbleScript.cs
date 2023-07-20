@@ -29,7 +29,7 @@ public class AnswerBubbleScript : MonoBehaviour
         asteroidScript = GameObject.FindGameObjectWithTag("asteroid").GetComponent<asteroidScript>();
         bubbles = GameObject.FindGameObjectsWithTag("bubble");
         logic = GameObject.FindGameObjectWithTag("logic").GetComponent<LogicScript>();
-        logic.AddScore();
+        if (AsteroidSpawnScript.hard == true) { logic.AddScore(); }
         asteroidScript.Explode(); 
         Destroy(asteroid);
         foreach (GameObject a in bubbles) { Destroy(a); }

@@ -223,7 +223,7 @@ RectTransform:
   - {fileID: 599353516}
   - {fileID: 654784648}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -371,7 +371,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &209130272
 GameObject:
@@ -579,6 +579,7 @@ MonoBehaviour:
   answer: 0
   userScore: 0
   score: 
+  username: 
   scoreText: {fileID: 1504653715}
   hits: 0
   timeToLive: 3
@@ -6426,7 +6427,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: -269.966, y: -180, z: 0.039993286}
 --- !u!1 &1324242854
 GameObject:
