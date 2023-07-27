@@ -714,7 +714,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Asteroid Multiplication
+  m_Text: Meteor Multiplication
 --- !u!222 &843672341
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1590,7 +1590,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: '
 
-    Solve the problems before the asteroids hit your ship!'
+    Solve the problems before the meteors hit your ship!'
 --- !u!222 &1890346487
 CanvasRenderer:
   m_ObjectHideFlags: 0

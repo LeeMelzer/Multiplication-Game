@@ -33,13 +33,11 @@ public class LogicScript : MonoBehaviour
     public string problem;
     public int answer;
     public int userScore;
-    public string username = "testuser1";
-    public string gamename = "game2";
+    public byte[] score;
     public Text scoreText;
     public int hits = 0;
     public float timeToLive = 3;
     public HashSet<int> set = new HashSet<int>();
-    public string url = "http://capstone.rasinnovation.org/insert.php";
 
     void Start()
     {
@@ -65,13 +63,9 @@ public class LogicScript : MonoBehaviour
             Destroy(smoke);
             smoke = null;
             GameOver();
-            if (AsteroidSpawnScript.hard == true)
-            {
-                SendFormData(username, gamename, userScore);
-            }
-
+            //Submit();
         }
-        
+
         // greater than two hits = game over
         if (GameObject.FindWithTag("asteroid") == null && hits <= 2)
         {
@@ -177,7 +171,7 @@ public class LogicScript : MonoBehaviour
         } while (set.Contains(temp));
         set.Add(temp);
         return temp.ToString();
-    }    
+    }
 
     public void AddScore()
     {
@@ -198,6 +192,7 @@ public class LogicScript : MonoBehaviour
     public void GameOver()
     {
         answerBox.text = "";
+        Submit();
         gameOverScreen.SetActive(true);
     }
 
@@ -206,22 +201,29 @@ public class LogicScript : MonoBehaviour
         answerBox.text = answer.ToString();
     }
 
-    public void SendFormData(string username, string gamename, int points)
+    public void Submit()
     {
-        StartCoroutine(PostFormData(username, gamename, points));
+        StartCoroutine(Upload());
     }
 
-    private IEnumerator PostFormData(string username, string gamename, int points)
+    IEnumerator Upload()
     {
+        string url = "http://capstone.rasinnovation.org:8080/insert.php";
+        string username = "testuser1";
+        string game = "game2";
+        // Create a new form
         WWWForm form = new WWWForm();
         form.AddField("username", username);
-        form.AddField("gamename", gamename);
-        form.AddField("points", points);
+        form.AddField("game", game);
+        form.AddField("points", userScore.ToString()); // Convert userScore to string
 
+        // Create a UnityWebRequest and send the form data as a POST request
         UnityWebRequest request = UnityWebRequest.Post(url, form);
 
+        // Send the request and wait for a response
         yield return request.SendWebRequest();
 
+        // Check for any errors
         if (request.result != UnityWebRequest.Result.Success)
         {
             Debug.LogError("Error sending form data: " + request.error);
